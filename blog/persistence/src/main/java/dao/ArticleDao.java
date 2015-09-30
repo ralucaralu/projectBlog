@@ -8,11 +8,7 @@ import javax.persistence.PersistenceContext;
 import java.util.List;
 
 /**
- * Created with IntelliJ IDEA.
- * User: Raluca
- * Date: 11.09.2015
- * Time: 14:05
- * To change this template use File | Settings | File Templates.
+ * Created by Raluca on 30.09.2015.
  */
 public class ArticleDao implements IArticleDao{
     private EntityManager entityManager;
@@ -21,9 +17,10 @@ public class ArticleDao implements IArticleDao{
         this.entityManager= entityManager;
     }
     public List<Article> getAll(){
-         return this.entityManager.createQuery("from Article").getResultList();
+        return this.entityManager.createQuery("from Article").getResultList();
     }
 
+    @Transactional
     public Article get(Long id) {
         if (id == null) {
             return null;
@@ -48,7 +45,7 @@ public class ArticleDao implements IArticleDao{
     }
     @Transactional
     public void remove(Long id) {
-       Article articleFromDbs = this.get(id);
+        Article articleFromDbs = this.get(id);
         if (articleFromDbs != null) {
             entityManager.remove(articleFromDbs);
         }

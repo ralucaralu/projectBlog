@@ -4,21 +4,15 @@ import dao.IArticleDao;
 import model.Article;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.util.List;
-
 /**
- * Created with IntelliJ IDEA.
- * User: Raluca
- * Date: 11.09.2015
- * Time: 14:21
- * To change this template use File | Settings | File Templates.
+ * Created by Raluca on 30.09.2015.
  */
 public class ArticleFacade implements IArticleFacade {
     @Autowired
     private IArticleDao articleDao;
 
     public List<Article> getAll(){
-     return this.articleDao.getAll();
+        return this.articleDao.getAll();
     }
 
     public Article get(Long id){
@@ -47,3 +41,4 @@ public class ArticleFacade implements IArticleFacade {
         this.articleDao = articleDao;
     }
 }
+

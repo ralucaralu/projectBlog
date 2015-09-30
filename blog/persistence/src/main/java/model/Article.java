@@ -3,13 +3,8 @@ package model;
 import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
 
-
 /**
- * Created with IntelliJ IDEA.
- * User: Raluca
- * Date: 11.09.2015
- * Time: 11:27
- * To change this template use File | Settings | File Templates.
+ * Created by Raluca on 30.09.2015.
  */
 @Entity
 @Table(name="article")
