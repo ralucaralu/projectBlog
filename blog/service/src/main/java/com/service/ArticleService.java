@@ -9,13 +9,8 @@ import org.springframework.stereotype.Controller;
 import java.util.ArrayList;
 import java.util.List;
 
-
 /**
- * Created with IntelliJ IDEA.
- * User: Raluca
- * Date: 10.09.2015
- * Time: 14:51
- * To change this template use File | Settings | File Templates.
+ * Created by Raluca on 01.10.2015.
  */
 @Controller
 @RequestMapping("/article")
@@ -26,7 +21,7 @@ public class ArticleService {
     @RequestMapping(value = "", method = RequestMethod.GET)
     @ResponseBody
     public List<Article> getAllArticles(){
-       return this.articleFacade.getAll();
+        return this.articleFacade.getAll();
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
