@@ -21,10 +21,12 @@ public class CommentFacade implements ICommentFacade {
         this.commentDao.saveComment(comment);
 
     }
+
     public void updateComment(Comment comment){
         this.commentDao.updateComment(comment);
 
     }
+
     public void deleteComment(Long articleId,Long commentId){
         this.commentDao.deleteComment(articleId,commentId);
 

@@ -29,7 +29,7 @@ public class CommentService {
     }
     @RequestMapping(value = "/article/{articleId}/comment", method = RequestMethod.POST)
     @ResponseBody
-    public void addComment (@PathVariable("articleId")Long articleId,Comment comment){
+    public void saveComment (@PathVariable("articleId")Long articleId,@RequestBody Comment comment){
         comment.setArticleId(articleId);
         this.commentFacade.saveComment(comment);
     }
@@ -38,7 +38,7 @@ public class CommentService {
     public void updateComment (@PathVariable("articleId")Long articleId,@PathVariable("commentId") Long commentId,@RequestBody Comment comment){
         comment.setId(commentId);
         comment.setArticleId(articleId);
-        this.commentFacade.saveComment(comment);
+        this.commentFacade.updateComment(comment);
 
     }
     @RequestMapping(value = "/article/{articleId}/comment/{commentId}", method = RequestMethod.DELETE)

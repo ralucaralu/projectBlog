@@ -4,6 +4,8 @@ import dao.IArticleDao;
 import model.Article;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.List;
+
 /**
  * Created by Raluca on 30.09.2015.
  */

@@ -7,6 +7,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.transaction.TransactionRolledbackException;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -31,9 +32,9 @@ public class CommentDao implements ICommentDao {
 
 
     public Comment getComment(Long articleId, Long commentId) {
-        Query query= this.entityManager.createQuery("from Comment where articleId=:articleId");
+        Query query= this.entityManager.createQuery("from Comment where articleId=:articleId AND id=:commentId");
         query.setParameter("articleId",articleId);
-        query.setParameter("articleId",commentId);
+        query.setParameter("commentId",commentId);
         List<Comment> result=query.getResultList();
         if(result!=null && !result.isEmpty()) {
             return result.get(0);
@@ -45,6 +46,7 @@ public class CommentDao implements ICommentDao {
 
     @Transactional
     public void saveComment(Comment comment) {
+        comment.setDate(new Date());
         this.entityManager.persist(comment);
         //To change body of implemented methods use File | Settings | File Templates.
     }
@@ -54,6 +56,7 @@ public class CommentDao implements ICommentDao {
         Comment commentFromDb=this.getComment(comment.getArticleId(),comment.getId());
         if(commentFromDb!=null){
             commentFromDb.setContent(comment.getContent());
+            commentFromDb.setLastDate(new Date());
             this.entityManager.persist(commentFromDb);
         }
         //To change body of implemented methods use File | Settings | File Templates.
@@ -67,3 +70,4 @@ public class CommentDao implements ICommentDao {
             //To change body of implemented methods use File | Settings | File Templates.
         }
     }
+}

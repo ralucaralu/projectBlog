@@ -3,6 +3,7 @@ package model;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.util.Date;
 
 /**
  * Created by Raluca on 30.09.2015.
@@ -21,20 +22,27 @@ public class Comment {
     @Column(name="articleId")
     private Long articleId;
 
+    @Column(name="date")
+    private Date date;
+
+    @Column(name="lastDate")
+    private Date lastDate;
+
     public Comment(){};
 
-    public Comment(String content, Long articleId) {
-        this.content=content;
-        this.articleId=articleId;
+    public Comment(String content, Long articleId, Date date, Date lastDate) {
+        this.content = content;
+        this.articleId = articleId;
+        this.date = date;
+        this.lastDate = lastDate;
     }
 
-    public void setArticleId(Long articleId) {
+    public Long getId() {
+        return id;
     }
 
-    public void setId() {
-    }
-
-    public void setId(Long commentId) {
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getContent() {
@@ -49,7 +57,23 @@ public class Comment {
         return articleId;
     }
 
-    public Long getId() {
-        return id;
+    public void setArticleId(Long articleId) {
+        this.articleId = articleId;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public Date getLastDate() {
+        return lastDate;
+    }
+
+    public void setLastDate(Date lastDate) {
+        this.lastDate = lastDate;
     }
 }
